@@ -10,15 +10,11 @@ setup(
     long_description=long_description,
     url="https://github.com/amanchauhan71/simple-dvc-project",
     author_email="amanchauhan7172@gmail.com",
-    # package_dir={"":"src"},
-    # packages=find_packages(where="src"),
     packages=["src"],
     license="GNU",
     python_requires=">=3.6",
     install_requires= [
         'dvc',
-        'dvc[gdrive]',
-        'dvc[s3]',
         'pandas',
         'scikit-learn'
     ]
