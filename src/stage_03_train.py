@@ -2,7 +2,7 @@ from src.utils.all_utils import read_yaml, create_directory, save_local_df
 import argparse
 import pandas as pd
 import os
-from sklearn.linear_model import ElasticNet
+from sklearn.linear_model import ElasticNet,LogisticRegression
 import joblib
 
 
@@ -24,12 +24,12 @@ def train(config_path, params_path):
     train_y = train_data["target"]
     train_x = train_data.drop("target", axis=1)
 
-    alpha = params["model_params"]["ElasticNet"]["alpha"]
-    l1_ratio = params["model_params"]["ElasticNet"]["l1_ratio"]
-    random_state = params["base"]["random_state"]
+    # alpha = params["model_params"]["ElasticNet"]["alpha"]
+    # l1_ratio = params["model_params"]["ElasticNet"]["l1_ratio"]
+    # random_state = params["base"]["random_state"]
 
 
-    lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=random_state)
+    lr = LogisticRegression()
     lr.fit(train_x, train_y)
 
     model_dir = config["artifacts"]["model_dir"]
