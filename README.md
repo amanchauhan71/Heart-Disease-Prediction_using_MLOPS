@@ -1,6 +1,9 @@
 # Heart_disease_solution_using_MLOPS
 This project solve heart disease and create MLOPS pipeline which you can track your data and changes easily
 
+![dvc_dag](https://user-images.githubusercontent.com/61115039/165897678-df8d4c54-1776-45f4-8f0a-fd407069ac35.PNG) ![folder_structure](https://user-images.githubusercontent.com/61115039/165897959-f1935f39-f700-4d46-a4aa-1051abff0fa1.PNG)
+
+
 # STEPS:
 ## STEP 01: Create a empty remote repository
 
