@@ -4,8 +4,8 @@ stages:
     cmd: python src/stage_01_load_and_save.py --config=config/config.yaml
     deps:
     - path: config/config.yaml
-      md5: a8c9b8d6944ae01c858e9be80f984aa5
-      size: 416
+      md5: 346660a5a84fc74f93e51788abe4c421
+      size: 414
     - path: src/stage_01_load_and_save.py
       md5: 8c3954b440604561dac95fa613d65852
       size: 1047
@@ -23,8 +23,8 @@ stages:
       md5: f6f9f0fff98d64d52c81ad3971dff618
       size: 11585
     - path: config/config.yaml
-      md5: a8c9b8d6944ae01c858e9be80f984aa5
-      size: 416
+      md5: 346660a5a84fc74f93e51788abe4c421
+      size: 414
     - path: src/stage_02_split_data.py
       md5: db2336249e75bf11b436596c46585187
       size: 1716
@@ -49,20 +49,37 @@ stages:
       md5: ea39eec9ebfc851bd8aa0401712ee98d
       size: 8129
     - path: config/config.yaml
-      md5: a8c9b8d6944ae01c858e9be80f984aa5
-      size: 416
+      md5: 346660a5a84fc74f93e51788abe4c421
+      size: 414
     - path: src/stage_03_train.py
-      md5: f8c53887b13a52f616a56a5c267e3204
-      size: 1632
+      md5: 496ec36d2da4686714d0ec54c6e801fe
+      size: 1608
     - path: src/utils/all_utils.py
       md5: 814aef90c540daea7194ce974462c6a4
       size: 718
-    params:
-      params.yaml:
-        base.random_state: 42
-        model_params.ElasticNet.alpha: 0.5
-        model_params.ElasticNet.l1_ratio: 0.5
     outs:
-    - path: artifacts/model_dir/ElasticNet.model
-      md5: eff872348fd48eef60656db27fe68c23
-      size: 1279
+    - path: artifacts/model_dir/Logistic.model
+      md5: 9c76046636aa02611fa86928dbaaaaea
+      size: 1449
+  evaluate:
+    cmd: python src/stage_04_evaluate.py --config=config/config.yaml --params=params.yaml
+    deps:
+    - path: artifacts/model_dir/Logistic.model
+      md5: 9c76046636aa02611fa86928dbaaaaea
+      size: 1449
+    - path: artifacts/split_data_dir/test.csv
+      md5: 8d0036bb8dd05ca925a3f535ba50a68f
+      size: 3537
+    - path: config/config.yaml
+      md5: 346660a5a84fc74f93e51788abe4c421
+      size: 414
+    - path: src/stage_04_evaluate.py
+      md5: 45df9999ebcde060567d379a6ea7579a
+      size: 2232
+    - path: src/utils/all_utils.py
+      md5: 814aef90c540daea7194ce974462c6a4
+      size: 718
+    outs:
+    - path: artifacts/reports_dir/scores.json
+      md5: 090500f3cde2c33505fff2705fce707b
+      size: 99
